@@ -61,23 +61,21 @@ public class MainActivity extends AppCompatActivity {
             cursor.close();
             arrayAdapter= new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,android.R.id.text1,nameArray);
             listView.setAdapter(arrayAdapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent= new Intent(MainActivity.this,Main2Activity.class);
+                    intent.putExtra("info","old");
+                    intent.putExtra("name",nameArray.get(i));
+                    intent.putExtra("number",numberArray.get(i));
+                    intent.putExtra("title",titleArray.get(i));
+                    intent.putExtra("id",idArray.get(i));
+                    startActivity(intent);
+                }
+            });
         }
-        else
-        {
-            Toast.makeText(this, "cursor bos", Toast.LENGTH_SHORT).show();
-        }
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent= new Intent(MainActivity.this,Main2Activity.class);
-                intent.putExtra("info","old");
-                intent.putExtra("name",nameArray.get(i));
-                intent.putExtra("number",numberArray.get(i));
-                intent.putExtra("title",titleArray.get(i));
-                intent.putExtra("id",idArray.get(i));
-                startActivity(intent);
-            }
-        });
+
+
 
     }
 

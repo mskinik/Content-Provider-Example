@@ -139,18 +139,13 @@ public class Main2Activity extends AppCompatActivity {
                     if (Integer.parseInt(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0)
                     {
 
-
-                       //Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,null, null);
-
-
                         Cursor findNumber=getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
                                 ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,null,null);
-
 
                         while(findNumber.moveToNext())
                         {
                             getNumber=findNumber.getString(findNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                            Toast.makeText(this, ""+getNumber, Toast.LENGTH_SHORT).show();
+
                         }
                         findNumber.close();
                     }
@@ -182,8 +177,6 @@ public class Main2Activity extends AppCompatActivity {
                 break;
 
         }
-
-        //AppProvider.NAME bunlar sqlite column isimlerini temsil ediyor bunlar yerine put içine direk column ismini versende olur
 
         ContentValues contentValues=new ContentValues();
         contentValues.put(AppProvider.NAME,name.getText().toString());

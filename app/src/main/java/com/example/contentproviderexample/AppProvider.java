@@ -6,12 +6,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.text.style.BackgroundColorSpan;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +17,8 @@ import androidx.annotation.Nullable;
 import java.util.Map;
 
 public class AppProvider extends ContentProvider {
-    static final String PROVIDER_NAME="com.example.contentproviderexample.AppProvider";
-    static final String URL="content://"+PROVIDER_NAME+"/contacts";
+    static final String AUTHORITY_NAME ="com.example.contentproviderexample.AppProvider";
+    static final String URL="content://"+ AUTHORITY_NAME +"/contacts";
     static final Uri CONTENT_URI=Uri.parse(URL);
     static final String ID="id";
     static  final String IMAGE="image";
@@ -31,7 +29,7 @@ public class AppProvider extends ContentProvider {
     static final UriMatcher URI_MATCHER;
     static {
         URI_MATCHER =new UriMatcher(UriMatcher.NO_MATCH);
-        URI_MATCHER.addURI(PROVIDER_NAME,"contacts",1);
+        URI_MATCHER.addURI(AUTHORITY_NAME,"contacts",1);
     }
     private static Map<String,String> P_MAP;
 
@@ -39,7 +37,7 @@ public class AppProvider extends ContentProvider {
     static final String DATABASE_NAME="Contacts.db";
     static final String TABLE_NAME="contacts";
     static final int DATABASE_VERSION=1;
-    static final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+" (title TEXT NOT NULL, "+
+    static final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+" (id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT NOT NULL, "+
             " name TEXT NOT NULL );";
     public class DBHelper extends SQLiteOpenHelper {
 
@@ -76,6 +74,7 @@ public class AppProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] strings, @Nullable String s, @Nullable String[] strings1, @Nullable String s1) {
 
+
         SQLiteQueryBuilder sqLiteQueryBuilder= new SQLiteQueryBuilder();
         sqLiteQueryBuilder.setTables(TABLE_NAME);
         Cursor cursor=sqLiteQueryBuilder.query(sqLiteDatabase,null,s,strings1,null,null,null);
@@ -93,17 +92,19 @@ public class AppProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues contentValues) {
-
-        long back=sqLiteDatabase.insert(TABLE_NAME,"",contentValues);
-        if(back>0)
+        switch (URI_MATCHER.match(uri))
         {
-            Uri insertUri=ContentUris.withAppendedId(uri,back);
-            getContext().getContentResolver().notifyChange(insertUri,null);
-            return insertUri;
+            case 1:
+                long back=sqLiteDatabase.insert(TABLE_NAME,"",contentValues);
+                if(back>0)
+                {
+                    Uri insertUri=ContentUris.withAppendedId(uri,back);
+                    getContext().getContentResolver().notifyChange(insertUri,null);
+                    return insertUri;
+                }
 
         }
-        throw  new SQLException("HATTTA");
-
+        return null;
     }
 
     @Override

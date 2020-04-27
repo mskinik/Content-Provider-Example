@@ -4,56 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@android:color/darker_gray">
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="442dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp" />
+        android:paddingTop="5dp"
+        android:paddingStart="10dp"
+        android:textSize="27dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/border" />
 
     <Button
         android:id="@+id/buttonFamily"
+        android:background="#80CBC4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="90dp"
         android:onClick="listFamily"
         android:text="Aile" />
 
     <Button
         android:id="@+id/buttonImportant"
+        android:background="#EF9A9A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="90dp"
         android:onClick="listImportant"
         android:text="ACİL!!" />
 
     <Button
         android:id="@+id/buttonFriend"
+        android:background="#B39DDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="137dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="90dp"
         android:onClick="listFriends"
         android:text="Arkadaş" />
 
     <Button
+        android:background="#E6EE9C"
         android:id="@+id/buttonAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp"
+        android:layout_marginBottom="19dp"
         android:onClick="listAll"
         android:text="Hepsi" />
 

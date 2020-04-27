@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Content Provider Example</string>
+    <string-array name="spinnerArray">
+        <item>Aile</item>
+        <item>Acil</item>
+        <item>Arkadas</item>
+    </string-array>
+</resources>

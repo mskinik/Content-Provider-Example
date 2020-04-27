@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Main2Activity">
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:onClick="ContactList"
+        android:text="Kayıtlı Kişi ekle" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="İsim"
+        android:textColorHint="@android:color/darker_gray"/>
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Numara"
+        android:textColorHint="@android:color/darker_gray"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioImportant"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:text="Acil"
+            android:textColor="@android:color/black"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/radioFamily"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:text="Aile"
+            android:textColor="@android:color/black"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/radioFriend"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:text="Arkadas"
+            android:textColor="@android:color/black"></RadioButton>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Update"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="20dp"
+            android:text="Güncelle" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="100dp"
+            android:onClick="Delete"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="Sil" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="99dp"
+            android:onClick="Save"
+            android:layout_height="wrap_content"
+            android:text="Kayıt Et" />
+    </LinearLayout>
+
+
+</LinearLayout>

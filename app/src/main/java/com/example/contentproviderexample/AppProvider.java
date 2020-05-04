@@ -21,7 +21,6 @@ public class AppProvider extends ContentProvider {
     static final String URL="content://"+ AUTHORITY_NAME +"/contacts";
     static final Uri CONTENT_URI=Uri.parse(URL);
     static final String ID="id";
-    static  final String IMAGE="image";
     static final String TITLE="title";
     static final String NAME="name";
     static final String NUMBER="number";
@@ -38,7 +37,7 @@ public class AppProvider extends ContentProvider {
     static final String TABLE_NAME="contacts";
     static final int DATABASE_VERSION=1;
     static final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+" (id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT NOT NULL, "+
-            " name TEXT NOT NULL );";
+            " name TEXT NOT NULL,number INTEGER NOT NULL );";
     public class DBHelper extends SQLiteOpenHelper {
 
 

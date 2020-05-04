@@ -42,8 +42,6 @@ public class Main2Activity extends AppCompatActivity {
     RadioButton r1,r2,r3;
     int selectedId;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,7 +163,6 @@ public class Main2Activity extends AppCompatActivity {
         {
             case R.id.radioFamily:
                 getTitle=r1.getText().toString();
-                Toast.makeText(this, ""+getTitle, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.radioFriend:
                 getTitle=r2.getText().toString();
@@ -177,17 +174,12 @@ public class Main2Activity extends AppCompatActivity {
                 break;
 
         }
-
         ContentValues contentValues=new ContentValues();
         contentValues.put(AppProvider.NAME,name.getText().toString());
         contentValues.put(AppProvider.NUMBER,number.getText().toString());
         contentValues.put(AppProvider.TITLE,getTitle);
         getContentResolver().insert(AppProvider.CONTENT_URI,contentValues);
         finish();
-
-
-
-
     }
     public void Delete (View view)
     {
@@ -202,7 +194,6 @@ public class Main2Activity extends AppCompatActivity {
         {
             case R.id.radioFamily:
                 getTitle=r1.getText().toString();
-                Toast.makeText(this, ""+getTitle, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.radioFriend:
                 getTitle=r2.getText().toString();
